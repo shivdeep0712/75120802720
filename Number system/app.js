@@ -5,27 +5,27 @@ const PORT = 8008;
 
 app.use(express.json());
 
-// Define endpoints to return the numbers
+
 app.get('/numbers/primes', (req, res) => {
-  // Replace this logic with your prime number generation algorithm or API call
-  const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23];
-  res.json({ numbers: primes });
+  
+  const primeNums = [2, 3, 5, 7, 11, 13, 17, 19, 23];
+  res.json({ numbers: primeNums });
 });
 
 app.get('/numbers/fibo', (req, res) => {
-  // Replace this logic with your fibonacci number generation algorithm or API call
-  const fibo = [1, 2, 3, 5, 8, 13, 21];
-  res.json({ numbers: fibo });
+
+  const fiboNums = [1, 2, 3, 5, 8, 13, 21];
+  res.json({ numbers: fiboNums });
 });
 
 app.get('/numbers/odd', (req, res) => {
 
-  const odd = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23];
-  res.json({ numbers: odd });
+  const oddNums = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23];
+  res.json({ numbers: oddNums });
 });
 
 
-// Endpoint to merge numbers from different URLs
+
 app.get('/numbers', async (req, res) => {
   const urls = req.query.url;
 
@@ -34,7 +34,7 @@ app.get('/numbers', async (req, res) => {
   }
 
   try {
-    const urlArray = Array.isArray(urls) ? urls : [urls]; // Always convert to an array
+    const urlArray = Array.isArray(urls) ? urls : [urls]; 
     const promises = urlArray.map(url => axios.get(url, { timeout: 500 }));
     const results = await Promise.all(promises);
     const numbersArray = results.map(response => response.data.numbers).flat();
